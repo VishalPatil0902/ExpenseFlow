@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthContextProvider, useAuth } from './src/Firebase/AuthContextProvider'; // Import the AuthContextProvider and useAuth hook
+import BottomTab from './src/Navigation/BottomTab';
+import Login from './src/Screens/Login/Login2';
+import SafeAreaWrapper from './src/Components/SafeAreaWrapper';
 
-export default function App() {
+
+
+const AppContent = () => {
+
+  const { user } = useAuth(); 
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+     <SafeAreaWrapper>
+          <NavigationContainer>
+            { user ? <BottomTab /> : <Login />} 
+          </NavigationContainer>
+      </SafeAreaWrapper>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <AuthContextProvider> 
+      <AppContent />
+    </AuthContextProvider>
+  );
+};
+
+export default App;
