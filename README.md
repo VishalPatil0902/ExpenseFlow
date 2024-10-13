@@ -80,7 +80,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## **Contact**
-
-For more information, feel free to reach out to the development team:
-- Vishal Patil – [vishal.email@example.com](mailto:vishal.email@example.com)
